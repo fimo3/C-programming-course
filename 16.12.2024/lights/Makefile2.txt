@@ -1,0 +1,13 @@
+all: lights
+
+lights: main_lights.o lights.o
+	gcc -o lights main_lights.o lights.o
+
+main_lights.o: main_lights.c lights.h
+	gcc -c main_lights.c
+
+lights.o: lights.c lights.h
+	gcc -c lights.c
+
+clean:
+	rm -f *.o lights

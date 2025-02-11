@@ -1,0 +1,15 @@
+gcc -E main.c -o preprocessed.c
+
+gcc -E nok.c -o nok_preprocessed.c
+gcc -S nok.c -o nok.s
+
+gcc -E transformation.c -o transformation_preprocessed.c
+gcc -S transformation.c -o transformation.s
+gcc -c transformation.c -o transformation.o
+gcc main.c transformation.o -o transformation_demo
+
+gcc -o power_demo power4.c -lm
+
+gcc -c maths.c -o maths.o
+ar rcs libmaths.a maths.o
+gcc main.c -o factorial_demo -L. -lmaths
